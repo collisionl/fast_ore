@@ -31,6 +31,9 @@ static int _err;
  */
 int main(int argc, char** argv) {
   const uint32_t NBITS[]      = {8, 16, 24, 32};
+  // const uint32_t BLOCK_LEN[]  = {  2,   4,   6,   8, 10, 12, 14, 16};
+  // const uint32_t ENC_TRIALS[] = {400, 400, 300, 200, 80, 10,  4,  1};
+  // const uint32_t CMP_TRIALS[] = {200, 200, 200, 100, 50, 25, 10,  5};
   const uint32_t BLOCK_LEN[]  = {8, 16};
   const uint32_t ENC_TRIALS[] = {1};
   const uint32_t CMP_TRIALS[] = {5};
