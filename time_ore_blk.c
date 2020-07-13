@@ -30,8 +30,8 @@ static int _err;
  * wide range of bitlengths (n) and block sizes (k).
  */
 int main(int argc, char** argv) {
-  const uint32_t NBITS[]      = {8, 16, 24, 32, 48, 64};
-  const uint32_t BLOCK_LEN[]  = {  2,   4,   6,   8, 10, 12, 14, 16};
+  const uint32_t NBITS[]      = {8, 16, 24, 32};
+  const uint32_t BLOCK_LEN[]  = { 128, 256};
   const uint32_t ENC_TRIALS[] = {400, 400, 300, 200, 80, 10,  4,  1};
   const uint32_t CMP_TRIALS[] = {200, 200, 200, 100, 50, 25, 10,  5};
 
