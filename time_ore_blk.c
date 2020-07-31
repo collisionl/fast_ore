@@ -30,14 +30,10 @@ static int _err;
  * wide range of bitlengths (n) and block sizes (k).
  */
 int main(int argc, char** argv) {
-  const uint32_t NBITS[]      = {8, 16, 24, 32};
-  // const uint32_t BLOCK_LEN[]  = {  2,   4,   6,   8, 10, 12, 14, 16};
-  // const uint32_t ENC_TRIALS[] = {400, 400, 300, 200, 80, 10,  4,  1};
-  // const uint32_t CMP_TRIALS[] = {200, 200, 200, 100, 50, 25, 10,  5};
-  const uint32_t BLOCK_LEN[]  = {8, 16};
-  const uint32_t ENC_TRIALS[] = {1};
-  const uint32_t CMP_TRIALS[] = {5};
-
+  const uint32_t NBITS[]      = {8, 16, 24, 32, 48, 64};
+  const uint32_t BLOCK_LEN[]  = {  2,   4,   6,   8, 10, 12, 14, 16};
+  const uint32_t ENC_TRIALS[] = {400, 400, 300, 200, 80, 10,  4,  1};
+  const uint32_t CMP_TRIALS[] = {200, 200, 200, 100, 50, 25, 10,  5};
 
 #ifdef USE_AES_RO
   const uint32_t ENC_SCALE = 250;
@@ -58,7 +54,7 @@ int main(int argc, char** argv) {
   printf("n = bit length of plaintext space\n");
   printf("k = block size (in bits)\n\n");
   printf("%2s %2s %8s %15s %15s %8s %15s %15s %15s\n",
-         "n", "k", "iter", "enc avg (ms)", "enc total (s)", "iter", "cmp avg (us)", "cmp total (s)", "len (bytes)");
+         "n", "k", "iter", "enc avg (us)", "enc total (s)", "iter", "cmp avg (us)", "cmp total (s)", "len (bytes)");
 
   for (int i = 0; i < nbits_len; i++) {
     for (int j = 0; j < nblock_len; j++) {
@@ -85,7 +81,7 @@ int main(int argc, char** argv) {
         enc_trials += n_trials;
       }
       double enc_time_elapsed = (double)(clock() - start_time) / CLOCKS_PER_SEC;
-      double enc_time = enc_time_elapsed / enc_trials * 1000;
+      double enc_time = enc_time_elapsed / enc_trials * 1000000;
 
       ore_blk_ciphertext ctxt2;
       ERR_CHECK(init_ore_blk_ciphertext(ctxt2, params));

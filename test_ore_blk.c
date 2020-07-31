@@ -26,7 +26,7 @@
 static int _error;
 #define ERR_CHECK(x) if((_error = x) != ERROR_NONE) { return _error; }
 
-static const int N_TRIALS = 500;
+static const int N_TRIALS = 10;
 
 /**
  * Generates two random 32-bit integers and encrypts them (with an 8-bit block size).
@@ -79,7 +79,7 @@ static int check_ore_blk() {
 int main(int argc, char** argv) {
   srand((unsigned) time(NULL));
 
-  printf("Testing ORE... ");
+  printf("Testing ORE BLK... ");
   fflush(stdout);
 
   for (int i = 0; i < N_TRIALS; i++) {
